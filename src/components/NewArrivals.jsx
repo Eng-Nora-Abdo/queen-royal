@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import bodySplash from "../assets/products/p1.jpg";
 import cream from "../assets/products/p2.jpg";
 import bracelet from "../assets/products/p3.jpg";
@@ -11,7 +13,7 @@ const products = [
   {
     id: 2,
     image: cream,
-    name: "jewelry"
+    name: "Jewelry"
   },
   {
     id: 3,
@@ -21,6 +23,8 @@ const products = [
 ];
 
 function NewArrivals() {
+  const navigate = useNavigate();
+
   return (
     <section className="py-24 bg-gradient-to-b from-white to-pink-50">
       
@@ -30,7 +34,7 @@ function NewArrivals() {
           New Arrivals
         </h2>
         <p className="text-gray-500 mt-3">
-          Fresh picks made for your Queen vibe 
+          Fresh picks made for your Queen vibe
         </p>
       </div>
 
@@ -57,7 +61,10 @@ function NewArrivals() {
                 {product.name}
               </h3>
 
-              <button className="mt-4 px-5 py-2 rounded-full border border-pink-300 text-pink-500 hover:bg-pink-500 hover:text-white transition">
+              <button
+                onClick={() => navigate("/products")}
+                className="mt-4 px-5 py-2 rounded-full border border-pink-300 text-pink-500 hover:bg-pink-500 hover:text-white transition"
+              >
                 View Product
               </button>
             </div>
