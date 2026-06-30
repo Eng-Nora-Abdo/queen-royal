@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 import img2 from "../assets/hero/img2.jpg";
 import img3 from "../assets/hero/img3.jpg";
 import img4 from "../assets/hero/img4.jpg";
@@ -47,6 +46,12 @@ const slides = [
     text: "Beauty products that celebrate your uniqueness.",
   },
 ];
+
+// 🔥 Preload images (حل الشاشة السودا)
+slides.forEach((slide) => {
+  const img = new Image();
+  img.src = slide.image;
+});
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
@@ -102,22 +107,22 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black">
-      {/* Background */}
-      <div
-        className="absolute inset-0 scale-110 transition-all duration-700"
-        style={{
-          backgroundImage: `url(${slides[current].image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
+
+      {/* Background Image (Fixed) */}
+      <div className="absolute inset-0">
+        <img
+          src={slides[current].image}
+          alt="hero"
+          className="w-full h-full object-cover transition-opacity duration-700"
+        />
+      </div>
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
+
         <h1 className="text-5xl md:text-7xl font-serif mb-6 max-w-5xl leading-tight">
           {typedTitle}
           <span className="animate-pulse">|</span>
@@ -133,6 +138,7 @@ export default function Hero() {
         >
           Shop Now
         </button>
+
       </div>
     </section>
   );
