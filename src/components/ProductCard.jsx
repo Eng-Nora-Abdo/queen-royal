@@ -6,6 +6,7 @@ function ProductCard({
   category,
   size,
   price,
+  types,
 }) {
   const { addToCart } = useCart();
 
@@ -19,7 +20,8 @@ function ProductCard({
 
   return (
     <div className="bg-white p-5 rounded-[32px] shadow-md border border-pink-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-      {/* Product Image */}
+
+      {/* Image */}
       <div className="bg-pink-50 rounded-3xl p-5">
         <img
           src={image}
@@ -28,7 +30,7 @@ function ProductCard({
         />
       </div>
 
-      {/* Product Info */}
+      {/* Name */}
       <h3 className="mt-6 text-xl font-semibold text-gray-800">
         {name}
       </h3>
@@ -42,6 +44,18 @@ function ProductCard({
         <span className="inline-block px-4 py-2 rounded-full bg-pink-50 text-pink-600 text-sm font-medium">
           {size}
         </span>
+      </div>
+
+      {/* TYPES (الأنواع الجديدة) */}
+      <div className="flex flex-wrap gap-2 mt-4">
+        {types?.map((type, i) => (
+          <span
+            key={i}
+            className="text-xs px-3 py-1 bg-pink-50 text-pink-500 rounded-full"
+          >
+            {type}
+          </span>
+        ))}
       </div>
 
       {/* Price */}
