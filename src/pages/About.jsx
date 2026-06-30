@@ -12,12 +12,19 @@ const About = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen overflow-hidden">
+      <section className="relative min-h-screen h-screen overflow-hidden">
+
         {/* Background Image */}
         <motion.img
           src={aboutImg}
           alt="Queen Royal"
-          className="absolute inset-0 w-full h-full object-cover object-center scale-105"
+          className="
+            absolute inset-0
+            w-full h-full
+            object-cover
+            object-top md:object-center
+            scale-105
+          "
           animate={{
             scale: [1.05, 1.08, 1.05],
           }}
