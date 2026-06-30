@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import img1 from "../assets/hero/img1.jpg";
+
 import img2 from "../assets/hero/img2.jpg";
 import img3 from "../assets/hero/img3.jpg";
 import img4 from "../assets/hero/img4.jpg";
@@ -11,11 +11,6 @@ import img7 from "../assets/hero/img7.jpg";
 import img8 from "../assets/hero/img8.jpg";
 
 const slides = [
-  {
-    image: img1,
-    title: "Reveal Your Radiant Elegance",
-    text: "Luxury beauty that makes you shine every day.",
-  },
   {
     image: img2,
     title: "Timeless Beauty Collection",
