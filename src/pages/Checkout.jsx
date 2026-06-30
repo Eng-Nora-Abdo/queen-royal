@@ -10,8 +10,7 @@ function Checkout() {
   );
 
   const handleOrder = (data) => {
-    // 🔥 رقم الواتساب الصحيح (لازم يبدأ بـ 20 من غير +)
-    const phoneNumber = "201012345678"; // غيريه برقمك الحقيقي
+    const phoneNumber = "201022603220"; 
 
     const itemsText = cartItems
       .map(
