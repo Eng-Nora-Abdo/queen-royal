@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 
 function CheckoutForm({ onSubmit }) {
@@ -13,6 +15,10 @@ function CheckoutForm({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!form.name || !form.phone || !form.address) {
+      alert("Please fill in all fields (Name, Phone, Address)");
+      return;
+    }
     onSubmit(form);
   };
 
@@ -26,7 +32,8 @@ function CheckoutForm({ onSubmit }) {
         placeholder="Full Name"
         value={form.name}
         onChange={handleChange}
-        className="w-full p-3 border rounded-xl"
+        required
+        className="w-full p-3 border border-pink-200 rounded-xl focus:outline-pink-400"
       />
 
       <input
@@ -34,7 +41,8 @@ function CheckoutForm({ onSubmit }) {
         placeholder="Phone Number"
         value={form.phone}
         onChange={handleChange}
-        className="w-full p-3 border rounded-xl"
+        required
+        className="w-full p-3 border border-pink-200 rounded-xl focus:outline-pink-400"
       />
 
       <textarea
@@ -42,12 +50,14 @@ function CheckoutForm({ onSubmit }) {
         placeholder="Address"
         value={form.address}
         onChange={handleChange}
-        className="w-full p-3 border rounded-xl"
+        required
+        rows={4}
+        className="w-full p-3 border border-pink-200 rounded-xl focus:outline-pink-400"
       />
 
       <button
         type="submit"
-        className="w-full bg-pink-500 text-white py-3 rounded-xl hover:bg-pink-600"
+        className="w-full bg-pink-500 text-white py-3 rounded-xl hover:bg-pink-600 transition font-medium cursor-pointer"
       >
         Confirm Order
       </button>

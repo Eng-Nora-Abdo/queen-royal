@@ -1,5 +1,7 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 import img2 from "../assets/hero/img2.jpg";
 import img3 from "../assets/hero/img3.jpg";
@@ -11,54 +13,56 @@ import img8 from "../assets/hero/img8.jpg";
 
 const slides = [
   {
-    image: img2,
+    image: img2?.src || img2,
     title: "Timeless Beauty Collection",
     text: "Discover skincare crafted for modern queens.",
   },
   {
-    image: img3,
+    image: img3?.src || img3,
     title: "Glow With Confidence",
     text: "Premium products inspired by elegance.",
   },
   {
-    image: img4,
+    image: img4?.src || img4,
     title: "Beauty Meets Luxury",
     text: "Every detail designed for your royal routine.",
   },
   {
-    image: img5,
+    image: img5?.src || img5,
     title: "A Touch of Soft Glam",
     text: "Feel confident, feminine and beautiful.",
   },
   {
-    image: img6,
+    image: img6?.src || img6,
     title: "Royal Self Care",
     text: "Because you deserve luxurious moments.",
   },
   {
-    image: img7,
+    image: img7?.src || img7,
     title: "Elegance In Every Drop",
     text: "Premium fragrances and skincare essentials.",
   },
   {
-    image: img8,
+    image: img8?.src || img8,
     title: "Designed For Queens",
     text: "Beauty products that celebrate your uniqueness.",
   },
 ];
-
-// 🔥 Preload images (حل الشاشة السودا)
-slides.forEach((slide) => {
-  const img = new Image();
-  img.src = slide.image;
-});
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [typedTitle, setTypedTitle] = useState("");
   const [typedText, setTypedText] = useState("");
 
-  const navigate = useNavigate();
+  const router = useRouter();
+
+  // 🔥 Preload images on client side
+  useEffect(() => {
+    slides.forEach((slide) => {
+      const img = new Image();
+      img.src = typeof slide.image === "string" ? slide.image : slide.image.src;
+    });
+  }, []);
 
   // Slider
   useEffect(() => {
@@ -100,7 +104,7 @@ export default function Hero() {
 
     return () => {
       clearInterval(titleInterval);
-      clearInterval(textInterval);
+      if (textInterval) clearInterval(textInterval);
       clearTimeout(textTimeout);
     };
   }, [current]);
@@ -133,8 +137,8 @@ export default function Hero() {
         </p>
 
         <button
-          onClick={() => navigate("/products")}
-          className="px-10 py-4 rounded-full bg-pink-500 text-white shadow-lg transition-all duration-300 hover:bg-pink-600 hover:scale-105"
+          onClick={() => router.push("/products")}
+          className="px-10 py-4 rounded-full bg-pink-500 text-white shadow-lg transition-all duration-300 hover:bg-pink-600 hover:scale-105 cursor-pointer"
         >
           Shop Now
         </button>

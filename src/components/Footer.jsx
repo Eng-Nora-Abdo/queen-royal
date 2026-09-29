@@ -3,7 +3,7 @@ import {
   FaTiktok,
   FaWhatsapp,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -33,7 +33,7 @@ const Footer = () => {
           <ul className="space-y-3 text-gray-500">
             <li>
               <Link
-                to="/"
+                href="/"
                 className="hover:text-pink-500 transition"
               >
                 Home
@@ -42,7 +42,7 @@ const Footer = () => {
 
             <li>
               <Link
-                to="/products"
+                href="/products"
                 className="hover:text-pink-500 transition"
               >
                 Products
@@ -51,7 +51,7 @@ const Footer = () => {
 
             <li>
               <Link
-                to="/about"
+                href="/about"
                 className="hover:text-pink-500 transition"
               >
                 About Us
@@ -90,6 +90,7 @@ const Footer = () => {
               href="https://www.instagram.com/queen_royal.207?igsh=MTRncTVtd2gxYTlhYw=="
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Instagram"
               className="text-pink-500 hover:text-pink-600 transition"
             >
               <FaInstagram />
@@ -99,6 +100,7 @@ const Footer = () => {
               href="https://vt.tiktok.com/ZSCUfqr6x/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="TikTok"
               className="text-pink-500 hover:text-black transition"
             >
               <FaTiktok />
@@ -108,6 +110,7 @@ const Footer = () => {
               href="https://chat.whatsapp.com/HvZEiTdO6Lm4mfRhcczzau"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="WhatsApp Group"
               className="text-pink-500 hover:text-green-500 transition"
             >
               <FaWhatsapp />

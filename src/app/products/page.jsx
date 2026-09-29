@@ -1,70 +1,11 @@
+"use client";
+
 import { useState } from "react";
-import ProductCard from "../components/ProductCard";
-import { useCart } from "../context/CartContext";
-import { productPrices } from "../data/productPrices";
+import ProductCard from "../../components/ProductCard";
+import { useCart } from "../../context/CartContext";
+import { products } from "../../data/products";
 
-const images = import.meta.glob("../assets/products/**/*.{jpg,png,jpeg}", {
-  eager: true,
-  import: "default",
-});
-
-const products = Object.entries(images).map(([path, image], index) => {
-  const isBody = path.includes("body-splash");
-  const isOffer = path.includes("offers");
-
-  let category = "Accessories";
-
-  if (isBody) category = "Body Splash";
-  if (isOffer) category = "Offers";
-
-  let name = path
-    .split("/")
-    .pop()
-    .replace(/\.(jpg|png|jpeg)/, "");
-
-  let size = "Free Size";
-
-  // السعر من الداتا
-  let price = productPrices[name];
-
-  // fallback
-  if (!price) price = 180;
-
-  // Body Splash rules
-  if (isBody) {
-    if (name.includes("5ml")) {
-      size = "Package (6 × 5 ml)";
-      price = 90;
-    } else if (name.includes("10ml")) {
-      size = "Package (6 × 10 ml)";
-      price = 190;
-    } else if (name.includes("120ml")) {
-      size = "120 ml";
-      price = 140;
-    } else if (name.includes("150ml")) {
-      size = "150 ml";
-      price = 180;
-    } else if (name.includes("220ml")) {
-      size = "220 ml";
-      price = 230;
-    } else if (name.includes("250ml")) {
-      size = "250 ml";
-      price = 280;
-    }
-  }
-
-  return {
-    id: index + 1,
-    image,
-    name,
-    size,
-    category,
-    price,
-    isOffer,
-  };
-});
-
-function Products() {
+export default function ProductsPage() {
   const { addToCart } = useCart();
 
   const [search, setSearch] = useState("");
@@ -96,7 +37,7 @@ function Products() {
           placeholder="Search products..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="border border-pink-200 px-4 py-2 rounded-full w-72"
+          className="border border-pink-200 px-4 py-2 rounded-full w-72 focus:outline-pink-400 bg-white"
         />
 
         {/* FILTERS */}
@@ -104,45 +45,55 @@ function Products() {
 
           <button
             onClick={() => setCategory("All")}
-            className={category === "All"
-              ? "bg-pink-500 text-white px-4 py-2 rounded-full"
-              : "border px-4 py-2 rounded-full"}
+            className={`px-4 py-2 rounded-full cursor-pointer transition ${
+              category === "All"
+                ? "bg-pink-500 text-white"
+                : "border border-pink-200 bg-white text-gray-700 hover:bg-pink-50"
+            }`}
           >
             All
           </button>
 
           <button
             onClick={() => setCategory("Body Splash")}
-            className={category === "Body Splash"
-              ? "bg-pink-500 text-white px-4 py-2 rounded-full"
-              : "border px-4 py-2 rounded-full"}
+            className={`px-4 py-2 rounded-full cursor-pointer transition ${
+              category === "Body Splash"
+                ? "bg-pink-500 text-white"
+                : "border border-pink-200 bg-white text-gray-700 hover:bg-pink-50"
+            }`}
           >
             Body Splash
           </button>
 
           <button
             onClick={() => setCategory("Accessories")}
-            className={category === "Accessories"
-              ? "bg-pink-500 text-white px-4 py-2 rounded-full"
-              : "border px-4 py-2 rounded-full"}
+            className={`px-4 py-2 rounded-full cursor-pointer transition ${
+              category === "Accessories"
+                ? "bg-pink-500 text-white"
+                : "border border-pink-200 bg-white text-gray-700 hover:bg-pink-50"
+            }`}
           >
             Accessories
           </button>
 
           <button
             onClick={() => setCategory("Offers")}
-            className={category === "Offers"
-              ? "bg-pink-500 text-white px-4 py-2 rounded-full"
-              : "border px-4 py-2 rounded-full"}
+            className={`px-4 py-2 rounded-full cursor-pointer transition ${
+              category === "Offers"
+                ? "bg-pink-500 text-white"
+                : "border border-pink-200 bg-white text-gray-700 hover:bg-pink-50"
+            }`}
           >
             Offers
           </button>
 
           <button
             onClick={() => setOffersOnly(!offersOnly)}
-            className={offersOnly
-              ? "bg-pink-500 text-white px-4 py-2 rounded-full"
-              : "border px-4 py-2 rounded-full"}
+            className={`px-4 py-2 rounded-full cursor-pointer transition ${
+              offersOnly
+                ? "bg-pink-500 text-white"
+                : "border border-pink-200 bg-white text-gray-700 hover:bg-pink-50"
+            }`}
           >
             Offers Only
           </button>
@@ -177,5 +128,3 @@ function Products() {
     </div>
   );
 }
-
-export default Products;

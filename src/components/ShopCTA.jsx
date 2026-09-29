@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 function ShopCTA() {
   return (
@@ -13,8 +13,8 @@ function ShopCTA() {
           Discover our beautiful collection and find your favorite products.
         </p>
 
-        <Link to="/products">
-          <button className="px-10 py-4 rounded-full bg-pink-500 text-white hover:bg-pink-600 transition duration-300">
+        <Link href="/products">
+          <button className="px-10 py-4 rounded-full bg-pink-500 text-white hover:bg-pink-600 transition duration-300 cursor-pointer">
             Shop Now
           </button>
         </Link>

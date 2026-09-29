@@ -1,46 +1,34 @@
 👑 Queen Royal
 
-Queen Royal is a modern and elegant e-commerce website for beauty products and accessories, designed to provide a smooth and luxurious shopping experience. The website is fully responsive and optimized for both desktop and mobile devices.
+Queen Royal is a modern and elegant e-commerce website for beauty products and accessories, designed to provide a smooth and luxurious shopping experience. Built with Next.js (App Router) and Tailwind CSS, the website is fully responsive, SEO-friendly, and optimized for both desktop and mobile devices.
 
 ✨ Features
+- Next.js App Router Architecture
 - Responsive Design (Mobile & Desktop)
-- Hero Slider with Smooth Animations
-- Product Search Functionality
-- Category Filtering
-- Dynamic Product Loading from Assets
-- Shopping Cart with Local Storage
-- Quantity Management in Cart
-- WhatsApp Order Integration
-- Google Analytics Integration
-- Smooth UI Animations using Framer Motion
+- Hero Slider with Smooth Animations & Typing Effect
+- Product Search & Category Filtering
+- Shopping Cart with Persistent Local Storage (Hydration-Safe)
+- Quantity Management & Live Total Calculation
+- Direct WhatsApp Checkout & Order Integration
+- Google Analytics Integration via `next/script`
+- Smooth UI Animations using Framer Motion & Swiper.js
 
- 🛠️ Built With
-- React.js
-- Vite
+🛠️ Built With
+- Next.js (App Router)
+- React 19
 - Tailwind CSS
-- React Router DOM
 - Framer Motion
+- Swiper.js
+- React Icons
 - Context API
 - Google Analytics
 
- 📦 Product Categories
-- Body Splash
-  - Package (6 × 5 ml)
-  - Package (6 × 10 ml)
-  - 120 ml
-  - 150 ml
-  - 220 ml
-  - 250 ml
-- Accessories
-  - Bracelets
-  - Necklaces
-  - Rings
+📦 Product Categories
+- Body Splash (5ml, 10ml, 120ml, 150ml, 220ml, 250ml)
+- Accessories (Bracelets, Necklaces, Rings)
 - Special Offers
 
- 🚀 Live Demo
-https://queen-royal.vercel.app/
-
- 📂 Installation
+🚀 Getting Started
 
 ```bash
 git clone https://github.com/Eng-Nora-Abdo/queen-royal.git
@@ -49,15 +37,11 @@ npm install
 npm run dev
 ```
 
- 📸 Screenshots
-You can add screenshots of:
-- Home Page
-- Products Page
-- About Page
-- Shopping Cart
-- Mobile View
+Run build:
+```bash
+npm run build
+npm start
+```
 
- 👩‍💻 Author
-Developed by Nora Abdoo
-
-Frontend Developer passionate about building modern, responsive, and user-friendly web applications using React and modern frontend technologies.
+👩‍💻 Author
+Developed by Nora Abdo

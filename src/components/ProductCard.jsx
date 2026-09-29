@@ -1,3 +1,5 @@
+"use client";
+
 import { useCart } from "../context/CartContext";
 
 function ProductCard({
@@ -18,58 +20,66 @@ function ProductCard({
     price,
   };
 
+  const imgSrc = image?.src || image;
+
   return (
-    <div className="bg-white p-5 rounded-[32px] shadow-md border border-pink-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+    <div className="bg-white p-5 rounded-[32px] shadow-md border border-pink-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
 
-      {/* Image */}
-      <div className="bg-pink-50 rounded-3xl p-5">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-80 object-contain"
-        />
-      </div>
+      <div>
+        {/* Image */}
+        <div className="bg-pink-50 rounded-3xl p-5 flex items-center justify-center">
+          <img
+            src={imgSrc}
+            alt={name}
+            className="w-full h-80 object-contain"
+          />
+        </div>
 
-      {/* Name */}
-      <h3 className="mt-6 text-xl font-semibold text-gray-800">
-        {name}
-      </h3>
+        {/* Name */}
+        <h3 className="mt-6 text-xl font-semibold text-gray-800">
+          {name}
+        </h3>
 
-      <p className="text-gray-400 text-sm mt-1">
-        {category}
-      </p>
+        <p className="text-gray-400 text-sm mt-1">
+          {category}
+        </p>
 
-      {/* Size */}
-      <div className="mt-4">
-        <span className="inline-block px-4 py-2 rounded-full bg-pink-50 text-pink-600 text-sm font-medium">
-          {size}
-        </span>
-      </div>
-
-      {/* TYPES (الأنواع الجديدة) */}
-      <div className="flex flex-wrap gap-2 mt-4">
-        {types?.map((type, i) => (
-          <span
-            key={i}
-            className="text-xs px-3 py-1 bg-pink-50 text-pink-500 rounded-full"
-          >
-            {type}
+        {/* Size */}
+        <div className="mt-4">
+          <span className="inline-block px-4 py-2 rounded-full bg-pink-50 text-pink-600 text-sm font-medium">
+            {size}
           </span>
-        ))}
+        </div>
+
+        {/* TYPES */}
+        {types && types.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-4">
+            {types.map((type, i) => (
+              <span
+                key={i}
+                className="text-xs px-3 py-1 bg-pink-50 text-pink-500 rounded-full"
+              >
+                {type}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Price */}
-      <p className="mt-5 text-3xl font-bold text-pink-600">
-        {price} EGP
-      </p>
+      <div>
+        {/* Price */}
+        <p className="mt-5 text-3xl font-bold text-pink-600">
+          {price} EGP
+        </p>
 
-      {/* Add To Cart */}
-      <button
-        onClick={() => addToCart(product)}
-        className="mt-6 w-full py-3 rounded-full bg-pink-500 text-white font-medium hover:bg-pink-600 transition"
-      >
-        Add to Cart
-      </button>
+        {/* Add To Cart */}
+        <button
+          onClick={() => addToCart(product)}
+          className="mt-6 w-full py-3 rounded-full bg-pink-500 text-white font-medium hover:bg-pink-600 transition cursor-pointer"
+        >
+          Add to Cart
+        </button>
+      </div>
     </div>
   );
 }

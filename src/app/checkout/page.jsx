@@ -1,7 +1,9 @@
-import { useCart } from "../context/CartContext";
-import CheckoutForm from "../components/CheckoutForm";
+"use client";
 
-function Checkout() {
+import { useCart } from "../../context/CartContext";
+import CheckoutForm from "../../components/CheckoutForm";
+
+export default function CheckoutPage() {
   const { cartItems } = useCart();
 
   const total = cartItems.reduce(
@@ -38,7 +40,9 @@ ${itemsText}
       message
     )}`;
 
-    window.open(whatsappURL, "_blank");
+    if (typeof window !== "undefined") {
+      window.open(whatsappURL, "_blank");
+    }
   };
 
   return (
@@ -76,7 +80,7 @@ ${itemsText}
                 </div>
               ))}
 
-              <hr className="my-4" />
+              <hr className="my-4 border-pink-100" />
 
               <h3 className="text-lg font-bold text-pink-600">
                 Total: {total} EGP
@@ -91,5 +95,3 @@ ${itemsText}
     </div>
   );
 }
-
-export default Checkout;

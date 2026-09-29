@@ -1,3 +1,5 @@
+"use client";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
@@ -18,7 +20,7 @@ import review10 from "../assets/reviews/review10.jpg";
 import review11 from "../assets/reviews/review11.jpg";
 import review12 from "../assets/reviews/review12.jpg";
 
-const reviews = [
+const rawReviews = [
   review1,
   review2,
   review3,
@@ -32,6 +34,8 @@ const reviews = [
   review11,
   review12,
 ];
+
+const reviews = rawReviews.map((r) => r?.src || r);
 
 function ReviewsSlider() {
   return (

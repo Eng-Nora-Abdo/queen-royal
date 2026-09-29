@@ -1,23 +1,27 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
-import aboutImg from "../assets/about/about.jpg";
+import aboutImg from "../../assets/about/about.jpg";
 
-import OurStory from "../components/OurStory";
-import WhyChooseUs from "../components/WhyChooseUs";
-import ReviewsSlider from "../components/ReviewsSlider";
-import ShopCTA from "../components/ShopCTA";
+import OurStory from "../../components/OurStory";
+import WhyChooseUs from "../../components/WhyChooseUs";
+import ReviewsSlider from "../../components/ReviewsSlider";
+import ShopCTA from "../../components/ShopCTA";
 
-const About = () => {
+const aboutImgSrc = aboutImg?.src || aboutImg;
+
+export default function AboutPage() {
   return (
     <>
       {/* HERO */}
       <section className="relative h-[100vh] md:h-screen overflow-hidden">
 
-        {/* Background (BEST PRACTICE FIX) */}
+        {/* Background */}
         <motion.div
           className="absolute inset-0 bg-center bg-cover"
-          style={{ backgroundImage: `url(${aboutImg})` }}
+          style={{ backgroundImage: `url(${aboutImgSrc})` }}
           animate={{
             scale: [1, 1.05, 1],
           }}
@@ -55,8 +59,8 @@ const About = () => {
               feel confident, elegant, and special.
             </p>
 
-            <Link to="/products">
-              <button className="mt-10 px-8 py-4 rounded-full bg-pink-500 text-white hover:bg-pink-600 transition">
+            <Link href="/products">
+              <button className="mt-10 px-8 py-4 rounded-full bg-pink-500 text-white hover:bg-pink-600 transition cursor-pointer">
                 Explore Collection
               </button>
             </Link>
@@ -71,6 +75,4 @@ const About = () => {
       <ShopCTA />
     </>
   );
-};
-
-export default About;
+}

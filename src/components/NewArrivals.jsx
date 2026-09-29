@@ -1,4 +1,6 @@
-import { useNavigate } from "react-router-dom";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 import bodySplash from "../assets/products/p1.jpg";
 import cream from "../assets/products/p2.jpg";
@@ -7,23 +9,23 @@ import bracelet from "../assets/products/p3.jpg";
 const products = [
   {
     id: 1,
-    image: bodySplash,
+    image: bodySplash?.src || bodySplash,
     name: "BodySplash"
   },
   {
     id: 2,
-    image: cream,
+    image: cream?.src || cream,
     name: "Jewelry"
   },
   {
     id: 3,
-    image: bracelet,
+    image: bracelet?.src || bracelet,
     name: "Stainless Bracelet"
   },
 ];
 
 function NewArrivals() {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <section className="py-24 bg-gradient-to-b from-white to-pink-50">
@@ -62,8 +64,8 @@ function NewArrivals() {
               </h3>
 
               <button
-                onClick={() => navigate("/products")}
-                className="mt-4 px-5 py-2 rounded-full border border-pink-300 text-pink-500 hover:bg-pink-500 hover:text-white transition"
+                onClick={() => router.push("/products")}
+                className="mt-4 px-5 py-2 rounded-full border border-pink-300 text-pink-500 hover:bg-pink-500 hover:text-white transition cursor-pointer"
               >
                 View Product
               </button>

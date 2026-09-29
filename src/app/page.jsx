@@ -4,11 +4,15 @@ import NewArrivals from "../components/NewArrivals";
 import Testimonials from "../components/Testimonials";
 import Newsletter from "../components/Newsletter";
 
-function Home() {
+export const metadata = {
+  title: "Queen Royal | Home",
+  description: "Discover feminine beauty essentials, body splash, perfumes, and elegant accessories.",
+};
+
+export default function HomePage() {
   return (
     <div className="min-h-screen bg-rose-50 dark:bg-slate-900 transition-colors duration-300">
       <Hero />
-      
       <FeaturedSection />
       <NewArrivals />
       <Testimonials />
@@ -16,5 +20,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;

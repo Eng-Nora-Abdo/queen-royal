@@ -22,7 +22,8 @@ function FeaturedSection() {
         <div className="md:col-span-2 relative group overflow-hidden rounded-3xl shadow-lg">
 
           <img
-            src={bodySplash}
+            src={bodySplash?.src || bodySplash}
+            alt="Body Splash Collection"
             className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-500"
           />
 
@@ -48,7 +49,8 @@ function FeaturedSection() {
           <div className="relative group overflow-hidden rounded-3xl shadow-md">
 
             <img
-              src={perfume}
+              src={perfume?.src || perfume}
+              alt="Signature Perfume"
               className="h-[198px] w-full object-cover group-hover:scale-105 transition duration-500"
             />
 
@@ -67,30 +69,30 @@ function FeaturedSection() {
           </div>
 
           {/* Skincare */}
- {/* Skincare */}
-<div className="relative overflow-hidden rounded-3xl shadow-md group">
+          <div className="relative overflow-hidden rounded-3xl shadow-md group">
 
-  <img
-    src={skincare}
-    className="h-[198px] w-full object-cover"
-  />
+            <img
+              src={skincare?.src || skincare}
+              alt="Skincare"
+              className="h-[198px] w-full object-cover"
+            />
 
-  {/* overlay بسيط جدًا من غير ما يغير لون الصورة */}
-  <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+            {/* overlay بسيط جدًا من غير ما يغير لون الصورة */}
+            <div className="absolute inset-0 flex items-center justify-center bg-black/20">
 
-    <div className="text-center text-white">
-      <h3 className="text-lg font-semibold">
-        Skincare
-      </h3>
+              <div className="text-center text-white">
+                <h3 className="text-lg font-semibold">
+                  Skincare
+                </h3>
 
-      <p className="text-sm mt-1 opacity-90">
-        Coming Soon
-      </p>
-    </div>
+                <p className="text-sm mt-1 opacity-90">
+                  Coming Soon
+                </p>
+              </div>
 
-  </div>
+            </div>
 
-</div>
+          </div>
 
         </div>
       </div>

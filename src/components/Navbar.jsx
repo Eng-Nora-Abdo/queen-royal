@@ -1,19 +1,22 @@
-import { Link, useLocation } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FaCrown, FaBars, FaTimes, FaShoppingBag } from "react-icons/fa";
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   const { cartItems } = useCart();
 
   // الصفحات اللي لونها Pink Theme
   const isPinkPage =
-    location.pathname === "/products" ||
-    location.pathname === "/cart" ||
-    location.pathname === "/checkout"; // ⭐ إضافة checkout هنا
+    pathname === "/products" ||
+    pathname === "/cart" ||
+    pathname === "/checkout";
 
   return (
     <>
@@ -21,7 +24,7 @@ const Navbar = () => {
       <nav className="absolute top-0 left-0 w-full z-50 flex items-center justify-between px-4 md:px-8 py-4 bg-transparent">
 
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3 cursor-pointer">
           <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center transition-transform hover:scale-105">
             <FaCrown className="text-pink-500 text-xl" />
           </div>
@@ -33,7 +36,7 @@ const Navbar = () => {
           >
             Queen Royal
           </span>
-        </div>
+        </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 font-medium">
@@ -44,7 +47,7 @@ const Navbar = () => {
           ].map((item) => (
             <Link
               key={item.to}
-              to={item.to}
+              href={item.to}
               className={`transition duration-300 ${
                 isPinkPage
                   ? "text-pink-500 hover:text-pink-600"
@@ -56,7 +59,7 @@ const Navbar = () => {
           ))}
 
           {/* Cart */}
-          <Link to="/cart" className="relative text-xl">
+          <Link href="/cart" className="relative text-xl">
             <FaShoppingBag
               className={`transition ${
                 isPinkPage
@@ -73,7 +76,7 @@ const Navbar = () => {
 
         {/* Mobile */}
         <div className="flex items-center gap-4 md:hidden">
-          <Link to="/cart" className="relative text-xl">
+          <Link href="/cart" className="relative text-xl">
             <FaShoppingBag
               className={`transition ${
                 isPinkPage ? "text-pink-500" : "text-white"
@@ -90,6 +93,7 @@ const Navbar = () => {
               isPinkPage ? "text-pink-500" : "text-white"
             }`}
             onClick={() => setMenuOpen(true)}
+            aria-label="Open Menu"
           >
             <FaBars />
           </button>
@@ -117,7 +121,7 @@ const Navbar = () => {
         ${
           menuOpen
             ? "translate-x-0 opacity-100"
-            : "translate-x-full opacity-0"
+            : "translate-x-full opacity-0 pointer-events-none"
         }`}
       >
         {/* Close */}
@@ -126,6 +130,7 @@ const Navbar = () => {
             isPinkPage ? "text-pink-500" : "text-white"
           }`}
           onClick={() => setMenuOpen(false)}
+          aria-label="Close Menu"
         >
           <FaTimes />
         </button>
@@ -138,7 +143,7 @@ const Navbar = () => {
         ].map((item) => (
           <Link
             key={item.to}
-            to={item.to}
+            href={item.to}
             onClick={() => setMenuOpen(false)}
             className={`text-lg font-medium transition ${
               isPinkPage
